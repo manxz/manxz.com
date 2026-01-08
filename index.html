@@ -13,62 +13,145 @@
 
         body {
             font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, sans-serif;
-            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%);
+            background: #f5f5f5;
+            min-height: 100vh;
+            color: #1d1d1f;
+        }
+
+        header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            padding: 24px 32px;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            text-decoration: none;
+            color: #1d1d1f;
+        }
+
+        .logo-icon {
+            width: 24px;
+            height: 24px;
+        }
+
+        .logo-text {
+            font-size: 16px;
+            font-weight: 600;
+            letter-spacing: -0.3px;
+        }
+
+        .container {
             min-height: 100vh;
             display: flex;
             align-items: center;
             justify-content: center;
-            color: #fff;
         }
 
-        .container {
-            text-align: center;
-            padding: 2rem;
-        }
-
-        h1 {
-            font-size: 4rem;
-            font-weight: 700;
-            margin-bottom: 1rem;
-            letter-spacing: -2px;
-        }
-
-        .tagline {
-            font-size: 1.25rem;
-            color: #94a3b8;
-            margin-bottom: 2.5rem;
-        }
-
-        .links {
+        .apps {
             display: flex;
-            gap: 1.5rem;
+            gap: 16px;
+            align-items: center;
+        }
+
+        .app-icon {
+            width: 64px;
+            height: 64px;
+            border-radius: 16px;
+            display: flex;
+            align-items: center;
             justify-content: center;
-            flex-wrap: wrap;
+            cursor: pointer;
+            transition: transform 0.2s ease;
         }
 
-        .links a {
-            color: #e2e8f0;
-            text-decoration: none;
-            padding: 0.75rem 1.5rem;
-            border: 1px solid #334155;
-            border-radius: 8px;
-            transition: all 0.2s ease;
+        .app-icon:hover {
+            transform: scale(1.05);
         }
 
-        .links a:hover {
-            background: rgba(255, 255, 255, 0.1);
-            border-color: #64748b;
+        .app-icon svg {
+            width: 64px;
+            height: 64px;
+        }
+
+        .app-coming {
+            width: 64px;
+            height: 64px;
+            border: 2px dashed #bfbfbf;
+            border-radius: 16px;
+            background: #f5f5f5;
+        }
+
+        .app-wrapper {
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .tooltip {
+            position: absolute;
+            bottom: -32px;
+            background: #1d1d1f;
+            color: #fff;
+            padding: 6px 12px;
+            border-radius: 6px;
+            font-size: 13px;
+            font-weight: 500;
+            white-space: nowrap;
+            opacity: 0;
+            visibility: hidden;
+            transition: opacity 0.2s ease, visibility 0.2s ease;
+        }
+
+        .app-wrapper:hover .tooltip {
+            opacity: 1;
+            visibility: visible;
         }
     </style>
 </head>
 <body>
+    <header>
+        <a href="/" class="logo">
+            <svg class="logo-icon" width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M0 9.6C0 6.23968 0 4.55953 0.653945 3.27606C1.22917 2.14708 2.14703 1.2292 3.27598 0.653961C4.55942 0 6.23953 0 9.59977 0H14.3997C17.7599 0 19.44 0 20.7234 0.653961C21.8524 1.2292 22.7702 2.14708 23.3455 3.27606C23.9994 4.55953 23.9994 6.23969 23.9994 9.6V14.4C23.9994 17.7603 23.9994 19.4405 23.3455 20.7239C22.7702 21.8529 21.8524 22.7708 20.7234 23.346C19.44 24 17.7599 24 14.3997 24H9.59977C6.23953 24 4.55942 24 3.27598 23.346C2.14703 22.7708 1.22917 21.8529 0.653945 20.7239C0 19.4405 0 17.7603 0 14.4V9.6Z" fill="#1D1D1F"/>
+                <path d="M11.7501 6C12.1643 6 12.5001 6.33579 12.5001 6.75V10.9248L16.3643 8.60645C16.7194 8.3936 17.1805 8.50928 17.3935 8.86426C17.6064 9.2194 17.4908 9.6805 17.1357 9.89355L13.2081 12.249L17.1357 14.6064C17.4908 14.8195 17.6064 15.2806 17.3935 15.6357C17.1805 15.9907 16.7194 16.1064 16.3643 15.8936L12.5001 13.5742V17.75C12.5001 18.1642 12.1643 18.5 11.7501 18.5C11.336 18.4999 11.0001 18.1641 11.0001 17.75V13.5742L7.13589 15.8936C6.78077 16.1063 6.31962 15.9908 6.10661 15.6357C5.89389 15.2807 6.00954 14.8195 6.36442 14.6064L10.2911 12.249L6.36442 9.89355C6.00954 9.68046 5.89387 9.21931 6.10661 8.86426C6.31961 8.50924 6.78078 8.39375 7.13589 8.60645L11.0001 10.9248V6.75C11.0001 6.33587 11.336 6.00014 11.7501 6Z" fill="white"/>
+            </svg>
+            <span class="logo-text">manxz</span>
+        </a>
+    </header>
+
     <div class="container">
-        <h1>Manxz</h1>
-        <p class="tagline">Building things on the internet</p>
-        <div class="links">
-            <a href="https://github.com/manxz" target="_blank">GitHub</a>
-            <a href="https://twitter.com/manxz" target="_blank">Twitter</a>
-            <a href="mailto:hello@manxz.com">Contact</a>
+        <div class="apps">
+            <!-- Homespace App -->
+            <div class="app-wrapper">
+                <a href="https://homespace.co" target="_blank" class="app-icon">
+                    <svg width="64" height="64" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M14.4001 0C17.7604 1.37003e-10 19.4404 0.000109136 20.7239 0.654053C21.8528 1.22929 22.7707 2.14715 23.3459 3.27612C23.9999 4.55957 24 6.23965 24 9.59985V14.4001C24 17.7604 23.9999 19.4404 23.3459 20.7239C22.7707 21.8528 21.8528 22.7707 20.7239 23.3459C19.4404 23.9999 17.7604 24 14.4001 24H9.59985C6.23965 24 4.55957 23.9999 3.27612 23.3459C2.14715 22.7707 1.22929 21.8528 0.654053 20.7239C0.000109196 19.4404 1.3835e-10 17.7604 0 14.4001V9.59985C1.37003e-10 6.23965 0.000109136 4.55957 0.654053 3.27612C1.22929 2.14715 2.14715 1.22929 3.27612 0.654053C4.55957 0.000109196 6.23965 1.3835e-10 9.59985 0H14.4001ZM12 5.25C11.7018 5.25 11.4155 5.36877 11.2046 5.57959L5.57959 11.2046C5.36879 11.4154 5.25019 11.7012 5.25 11.9993V18.7493C5.25 18.8984 5.30937 19.0415 5.41479 19.147C5.52028 19.2525 5.66332 19.3118 5.8125 19.3118H9.75C9.89918 19.3118 10.0422 19.2525 10.1477 19.147C10.2531 19.0415 10.3125 18.8984 10.3125 18.7493V15.093C10.3126 15.0186 10.342 14.9472 10.3945 14.8945C10.4473 14.8418 10.5192 14.8118 10.5938 14.8118H13.4062C13.4808 14.8118 13.5527 14.8418 13.6055 14.8945C13.658 14.9472 13.6874 15.0186 13.6875 15.093V18.7493C13.6875 18.8984 13.7469 19.0415 13.8523 19.147C13.9578 19.2525 14.1008 19.3118 14.25 19.3118H18.1875C18.3367 19.3118 18.4797 19.2525 18.5852 19.147C18.6906 19.0415 18.75 18.8984 18.75 18.7493V11.9993C18.7498 11.7012 18.6312 11.4154 18.4204 11.2046L12.7954 5.57959C12.5845 5.36877 12.2982 5.25 12 5.25Z" fill="#FF7700"/>
+                    </svg>
+                </a>
+                <span class="tooltip">Homespace</span>
+            </div>
+
+            <!-- Workapp -->
+            <div class="app-wrapper">
+                <a href="https://workapp.co" target="_blank" class="app-icon">
+                    <svg width="64" height="64" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M0 9.6C0 6.23968 0 4.55953 0.653961 3.27606C1.2292 2.14708 2.14708 1.2292 3.27606 0.653961C4.55953 0 6.23969 0 9.6 0H14.4C17.7603 0 19.4405 0 20.7239 0.653961C21.8529 1.2292 22.7708 2.14708 23.346 3.27606C24 4.55953 24 6.23969 24 9.6V14.4C24 17.7603 24 19.4405 23.346 20.7239C22.7708 21.8529 21.8529 22.7708 20.7239 23.346C19.4405 24 17.7603 24 14.4 24H9.6C6.23968 24 4.55953 24 3.27606 23.346C2.14708 22.7708 1.2292 21.8529 0.653961 20.7239C0 19.4405 0 17.7603 0 14.4V9.6Z" fill="#06DF79"/>
+                        <path d="M11.9999 5.75C12.4141 5.75 12.7499 6.08579 12.7499 6.5V10.6748L16.6142 8.35645C16.9693 8.1436 17.4304 8.25928 17.6435 8.61426C17.8564 8.9694 17.7408 9.4305 17.3857 9.64355L13.4579 11.999L17.3857 14.3564C17.7408 14.5695 17.8564 15.0306 17.6435 15.3857C17.4304 15.7407 16.9693 15.8564 16.6142 15.6436L12.7499 13.3242V17.5C12.7499 17.9142 12.4141 18.25 11.9999 18.25C11.5858 18.2499 11.2499 17.9141 11.2499 17.5V13.3242L7.38566 15.6436C7.03054 15.8563 6.56938 15.7408 6.35636 15.3857C6.14365 15.0307 6.25929 14.5695 6.61418 14.3564L10.5409 11.999L6.61418 9.64355C6.2593 9.43046 6.14362 8.96931 6.35636 8.61426C6.56937 8.25924 7.03055 8.14375 7.38566 8.35645L11.2499 10.6748V6.5C11.2499 6.08587 11.5858 5.75014 11.9999 5.75Z" fill="white"/>
+                    </svg>
+                </a>
+                <span class="tooltip">Workapp</span>
+            </div>
+
+            <!-- Coming Soon -->
+            <div class="app-wrapper">
+                <div class="app-coming"></div>
+                <span class="tooltip">Coming soon</span>
+            </div>
         </div>
     </div>
 </body>
